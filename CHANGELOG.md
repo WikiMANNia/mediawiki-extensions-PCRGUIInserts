@@ -1,6 +1,13 @@
 The CHANGELOG of the PCR GUI Inserts extension to MediaWiki.
 
 
+## Version 3.0.0
+
+Released November 14, 2035 by WikiMANNia
+
+* Support for MW 1.35 and later
+
+
 ## Version 2.0.4
 
 Released March 6, 2019 by Karsten Hoffmeyer
