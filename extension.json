@@ -1,0 +1,73 @@
+{
+	"name": "PCR GUI Inserts",
+	"namemsg": "pcrguiinserts-desc",
+	"version": "3.0.0",
+	"author": [
+		"David Dernoncourt",
+		"[//wikimannia.org WikiMANNia]"
+	],
+	"url": "https://www.mediawiki.org/wiki/Extension:PCR_GUI_Inserts",
+	"descriptionmsg": "hitcounters-desc",
+	"type": "other",
+	"license-name": "CC-BY-SA-4.0",
+	"requires": {
+		"MediaWiki": ">= 1.35.0"
+	},
+	"MessagesDirs": {
+		"HitCounters": [
+			"i18n"
+		]
+	},
+	"Hooks": {
+		"BeforePageDisplay": "main",
+		"SkinAfterBottomScripts": "main",
+		"SkinBuildSidebar": "main"
+	},
+	"HookHandlers": {
+		"main": {
+			"class": "MediaWiki\\Extension\\PCRGUIInserts\\Hooks",
+			"services": [
+				"MainConfig"
+			]
+		}
+	},
+	"AutoloadClasses": {
+		"MediaWiki\\Extension\\PCRGUIInserts\\Hooks": "includes/Hooks.php"
+	},
+	"config": {
+		"PCRguii_Inserts": {
+			"type": "array",
+			"value": [
+				'addHeadItem' => [
+					'on' => false,
+					'content' => [
+						'head1',
+						'head2'
+					]
+				],
+				'BeforePageDisplay' => [
+					'on' => false,
+					'content' => 'BeforePageDisplay'
+				],
+				'SkinAfterBottomScripts' => [
+					'on' => false,
+					'content' => 'SkinAfterBottomScripts'
+				],
+				'SkinBuildSidebar' => [
+					'on' => false,
+					'content' => [
+						[
+							'title1',
+							'content1'
+						],
+						[
+							'title2',
+							'content2'
+						]
+					]
+				]
+			]
+		}
+	},
+	"manifest_version": 2
+}

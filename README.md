@@ -5,8 +5,8 @@ The PCR GUI Inserts extension lets you easily add pieces of HTML code at several
 
 ### Compatibility
 
-* PHP 5.3+
-* MediaWiki 1.23+
+* PHP 5.6+
+* MediaWiki 1.35+
 
 See also the CHANGELOG.md file provided with the code.
 
@@ -19,7 +19,7 @@ See also the CHANGELOG.md file provided with the code.
 
 (3) Add the following code at the bottom of your "LocalSettings.php" file:
 ```
-require_once "$IP/extensions/PCRGUIInserts/PCRGUIInserts.php";
+wfLoadExtension( 'PCRGUIInserts' );
 ```
 (4) Configure this extension as needed for your wiki. See the [documentation](https://www.mediawiki.org/wiki/Extension:PCR_GUI_Inserts#Configuration).
 
