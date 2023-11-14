@@ -12,10 +12,11 @@
 
 namespace MediaWiki\Extension\PCRGUIInserts;
 
-use MediaWiki\Hook\SkinAfterBottomScriptsHook
+use MediaWiki\Hook\SkinAfterBottomScriptsHook;
 use MediaWiki\Hook\SkinBuildSidebarHook;
 use MediaWiki\Hook\BeforePageDisplayHook;
 
+use GlobalVarConfig;
 use OutputPage;
 use Skin;
 
@@ -35,7 +36,10 @@ class Hooks implements
 	BeforePageDisplayHook
 {
 
-	private array $inserts;
+	private array $PcrGuiHeadItems;
+	private array $PcrGuiSidebarItems;
+	private string $PcrGuiDisplayBottom;
+	private string $PcrGuiScripts;
 
 	/**
 	 * @param GlobalVarConfig $config
@@ -43,7 +47,14 @@ class Hooks implements
 	public function __construct(
 		GlobalVarConfig $config
 	) {
-		$this->inserts = $config->get( "PCRguii_Inserts" );
+		if ( !empty ( $this->PcrGuiHeadItems ) ) {
+			$this->PcrGuiHeadItems = $config->get( "PcrGuiHeadItems" );
+		}
+		if ( !empty ( $this->PcrGuiSidebarItems ) ) {
+			$this->PcrGuiSidebarItems = $config->get( "PcrGuiSidebarItems" );
+		}
+		$this->PcrGuiDisplayBottom = $config->get( "PcrGuiDisplayBottom" );
+		$this->PcrGuiScripts = $config->get( "PcrGuiScripts" );
 	}
 
 	/**
@@ -57,16 +68,16 @@ class Hooks implements
 	 */
 	public function onBeforePageDisplay( $out, $skin ): void {
 
-		if ( $this->inserts['addHeadItem']['on'] ) {
+		if ( !empty ( $this->PcrGuiHeadItems ) ) {
 
 			$i=0;
-			foreach ( $this->inserts['addHeadItem']['content'] as $value ) {
-				$out->addHeadItem('PCRGUIInserts'.$i,$value);
+			foreach ( $this->PcrGuiHeadItems as $value ) {
+				$out->addHeadItem('PCRGUIInserts'.$i, $value);
 				$i++;
 			}
 		}
-		if ( $this->inserts['BeforePageDisplay']['on'] ) {
-			$out->addHTML( $this->inserts['BeforePageDisplay']['content'] );
+		if ( !empty ( $this->PcrGuiDisplayBottom ) ) {
+			$out->addHTML( $this->PcrGuiDisplayBottom );
 		}
 	}
 
@@ -82,8 +93,8 @@ class Hooks implements
 	 */
 	public function onSkinAfterBottomScripts( $skin, &$text ) {
 
-		if ( $this->inserts['SkinAfterBottomScripts']['on'] ) {
-			$text .= $this->inserts['SkinAfterBottomScripts']['content'];
+		if ( !empty ( $this->PcrGuiScripts ) ) {
+			$text .= $this->PcrGuiScripts;
 		}
 	}
 
@@ -98,9 +109,10 @@ class Hooks implements
 	 */
 	public function onSkinBuildSidebar( $skin, &$bar ) {
 
-		if ( $this->inserts['SkinBuildSidebar']['on'] ) {
-			foreach ( $this->inserts['SkinBuildSidebar']['content'] as $value )
-			$bar[$value[0]] = $value[1];
+		if ( !empty ( $this->PcrGuiSidebarItems ) ) {
+			foreach ( $this->PcrGuiSidebarItems as $value ) {
+				$bar[$value[0]] = $value[1];
+			}
 		}
 	}
 }
