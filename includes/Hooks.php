@@ -36,10 +36,7 @@ class Hooks implements
 	BeforePageDisplayHook
 {
 
-	private array $PcrGuiHeadItems;
-	private array $PcrGuiSidebarItems;
-	private string $PcrGuiDisplayBottom;
-	private string $PcrGuiScripts;
+	private GlobalVarConfig $config;
 
 	/**
 	 * @param GlobalVarConfig $config
@@ -47,20 +44,11 @@ class Hooks implements
 	public function __construct(
 		GlobalVarConfig $config
 	) {
-		if ( !empty ( $this->PcrGuiHeadItems ) ) {
-			$this->PcrGuiHeadItems = $config->get( "PcrGuiHeadItems" );
-		}
-		if ( !empty ( $this->PcrGuiSidebarItems ) ) {
-			$this->PcrGuiSidebarItems = $config->get( "PcrGuiSidebarItems" );
-		}
-		$this->PcrGuiDisplayBottom = $config->get( "PcrGuiDisplayBottom" );
-		$this->PcrGuiScripts = $config->get( "PcrGuiScripts" );
+		$this->config = $config;
 	}
 
 	/**
 	 * This hook is called prior to outputting a page.
-	 *
-	 * @since 1.35
 	 *
 	 * @param OutputPage $out
 	 * @param Skin $skin
@@ -68,23 +56,32 @@ class Hooks implements
 	 */
 	public function onBeforePageDisplay( $out, $skin ): void {
 
-		if ( !empty ( $this->PcrGuiHeadItems ) ) {
+		$_array = $this->config->get( "PcrGuiHeadItems" );
+		if ( is_array( $_array ) && ( count( $_array ) > 0 ) ) {
 
 			$i=0;
-			foreach ( $this->PcrGuiHeadItems as $value ) {
-				$out->addHeadItem('PCRGUIInserts'.$i, $value);
+			foreach ( $_array as $value ) {
+				$out->addHeadItem( "PCRGUIInserts_$i", $value );
 				$i++;
 			}
 		}
-		if ( !empty ( $this->PcrGuiDisplayBottom ) ) {
-			$out->addHTML( $this->PcrGuiDisplayBottom );
+
+		$_array = $this->config->get( "PcrGuiMetaItems" );
+		if ( is_array( $_array ) && ( count( $_array ) > 0 ) ) {
+
+			foreach ( $_array as $value ) {
+				$out->addMeta( $value[0], $value[1] );
+			}
+		}
+
+		$_string = $this->config->get( "PcrGuiDisplayBottom" );
+		if ( !empty( $_string ) ) {
+			$out->addHTML( $_string );
 		}
 	}
 
 	/**
 	 * This hook is called at the end of Skin::bottomScripts().
-	 *
-	 * @since 1.35
 	 *
 	 * @param Skin $skin
 	 * @param string &$text BottomScripts text. Append to $text to add additional text/scripts after
@@ -93,15 +90,14 @@ class Hooks implements
 	 */
 	public function onSkinAfterBottomScripts( $skin, &$text ) {
 
-		if ( !empty ( $this->PcrGuiScripts ) ) {
-			$text .= $this->PcrGuiScripts;
+		$_string = $this->config->get( "PcrGuiScripts" );
+		if ( !empty( $_string ) ) {
+			$text .= $_string;
 		}
 	}
 
 	/**
 	 * This hook is called at the end of Skin::buildSidebar().
-	 *
-	 * @since 1.35
 	 *
 	 * @param Skin $skin
 	 * @param array &$bar Sidebar contents. Modify $bar to add or modify sidebar portlets.
@@ -109,8 +105,9 @@ class Hooks implements
 	 */
 	public function onSkinBuildSidebar( $skin, &$bar ) {
 
-		if ( !empty ( $this->PcrGuiSidebarItems ) ) {
-			foreach ( $this->PcrGuiSidebarItems as $value ) {
+		$_array = $this->config->get( "PcrGuiSidebarItems" );
+		if ( is_array( $_array ) && ( count( $_array ) > 0 ) ) {
+			foreach ( $_array as $value ) {
 				$bar[$value[0]] = $value[1];
 			}
 		}

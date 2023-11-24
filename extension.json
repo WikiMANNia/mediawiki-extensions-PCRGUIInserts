@@ -3,12 +3,14 @@
 	"version": "3.0.0",
 	"author": [
 		"David Dernoncourt",
+		"Dennis Roczek",
+		"Karsten Hoffmeyer",
 		"[//wikimannia.org WikiMANNia]"
 	],
 	"url": "https://www.mediawiki.org/wiki/Extension:PCR_GUI_Inserts",
 	"descriptionmsg": "pcrguiinserts-desc",
-	"type": "other",
 	"license-name": "CC-BY-SA-4.0",
+	"type": "other",
 	"requires": {
 		"MediaWiki": ">= 1.35.0"
 	},
@@ -35,12 +37,16 @@
 	},
 	"config": {
 		"PcrGuiHeadItems": {
-			"type": "string",
-			"value": "head1, head2"
+			"type": "array",
+			"value": []
+			},
+		"PcrGuiMetaItems": {
+			"type": "array",
+			"value": []
 			},
 		"PcrGuiSidebarItems": {
-			"type": "string",
-			"value": "[ 'title1', 'content1' ], [ 'title2', 'content2' ]"
+			"type": "array",
+			"value": []
 			},
 		"PcrGuiDisplayBottom": {
 			"type": "string",
