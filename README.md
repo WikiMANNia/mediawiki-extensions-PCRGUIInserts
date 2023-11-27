@@ -13,7 +13,7 @@ See also the CHANGELOG.md file provided with the code.
 
 ### Installation
 
-(1) Obtain the code from [GitHub](https://github.com/wikimedia/mediawiki-extensions-PCRGUIInserts/releases)
+(1) Obtain the code from [GitHub](https://github.com/WikiMANNia/mediawiki-extensions-PCRGUIInserts/releases)
 
 (2) Extract the files in a directory called `PCRGUIInserts` in your `extensions/` folder.
 
