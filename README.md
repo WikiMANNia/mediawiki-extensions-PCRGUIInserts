@@ -1,9 +1,18 @@
-## PCR GUI Inserts
+# PCR GUI Inserts
+
+Die Pflege dieses Forks der MediaWiki-Erweiterung [PCRGUIInserts](https://www.mediawiki.org/wiki/Extension:PCRGUIInserts/de) wird von WikiMANNia verwaltet.
+
+The maintenance of this fork of the MediaWiki extension [PCRGUIInserts](https://www.mediawiki.org/wiki/Extension:PCRGUIInserts) is managed by WikiMANNia.
+
+El mantenimiento de esta bifurcación de la extensión de MediaWiki [PCRGUIInserts](https://www.mediawiki.org/wiki/Extension:PCRGUIInserts/es) está gestionado por WikiMANNia.
+
+
+## Purpose
 
 The PCR GUI Inserts extension lets you easily add pieces of HTML code at several useful places of the GUI.
 
 
-### Compatibility
+## Compatibility
 
 * PHP 5.6+
 * MediaWiki 1.35+
@@ -11,7 +20,7 @@ The PCR GUI Inserts extension lets you easily add pieces of HTML code at several
 See also the CHANGELOG.md file provided with the code.
 
 
-### Installation
+## Installation
 
 (1) Obtain the code from [GitHub](https://github.com/WikiMANNia/mediawiki-extensions-PCRGUIInserts/releases)
 
