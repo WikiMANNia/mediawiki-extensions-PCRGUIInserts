@@ -1,10 +1,10 @@
 # PCR GUI Inserts
 
-Die Pflege dieses Forks der MediaWiki-Erweiterung [PCRGUIInserts](https://www.mediawiki.org/wiki/Extension:PCRGUIInserts/de) wird von WikiMANNia verwaltet.
+Die Pflege dieses Forks der MediaWiki-Erweiterung [PCR GUI Inserts](https://www.mediawiki.org/wiki/Extension:PCR_GUI_Inserts) wird von WikiMANNia verwaltet.
 
-The maintenance of this fork of the MediaWiki extension [PCRGUIInserts](https://www.mediawiki.org/wiki/Extension:PCRGUIInserts) is managed by WikiMANNia.
+The maintenance of this fork of the MediaWiki extension [PCR GUI Inserts](https://www.mediawiki.org/wiki/Extension:PCR_GUI_Inserts) is managed by WikiMANNia.
 
-El mantenimiento de esta bifurcación de la extensión de MediaWiki [PCRGUIInserts](https://www.mediawiki.org/wiki/Extension:PCRGUIInserts/es) está gestionado por WikiMANNia.
+El mantenimiento de esta bifurcación de la extensión de MediaWiki [PCR GUI Inserts](https://www.mediawiki.org/wiki/Extension:PCR_GUI_Inserts) está gestionado por WikiMANNia.
 
 
 ## Purpose
