@@ -1,4 +1,12 @@
-The CHANGELOG of the PCR GUI Inserts extension to MediaWiki.
+The CHANGELOG of the [PCR GUI Inserts](https://www.mediawiki.org/wiki/PCRGUIInserts) extension to MediaWiki.
+
+
+## Version 3.1.0
+
+Released April 22, 2026 by WikiMANNia
+
+* Add Support for REL1_44 and REL1_45
+* Added translations from translatewiki.net translators
 
 
 ## Version 3.0.0

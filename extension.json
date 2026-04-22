@@ -1,6 +1,6 @@
 {
 	"name": "PCR GUI Inserts",
-	"version": "3.0.0",
+	"version": "3.1.0",
 	"author": [
 		"David Dernoncourt",
 		"[//wikimannia.org WikiMANNia]"
@@ -17,10 +17,8 @@
 			"i18n"
 		]
 	},
-	"Hooks": {
-		"BeforePageDisplay": "main",
-		"SkinAfterBottomScripts": "main",
-		"SkinBuildSidebar": "main"
+	"AutoloadNamespaces": {
+		"MediaWiki\\Extension\\PCRGUIInserts\\": "includes/"
 	},
 	"HookHandlers": {
 		"main": {
@@ -30,26 +28,28 @@
 			]
 		}
 	},
-	"AutoloadClasses": {
-		"MediaWiki\\Extension\\PCRGUIInserts\\Hooks": "includes/Hooks.php"
+	"Hooks": {
+		"BeforePageDisplay": "main",
+		"SkinAfterBottomScripts": "main",
+		"SkinBuildSidebar": "main"
 	},
 	"config": {
 		"PcrGuiHeadItems": {
 			"type": "array",
 			"value": []
-			},
+		},
 		"PcrGuiMetaItems": {
 			"type": "array",
 			"value": []
-			},
+		},
 		"PcrGuiSidebarItems": {
 			"type": "array",
 			"value": []
-			},
+		},
 		"PcrGuiDisplayBottom": {
 			"type": "string",
 			"value": ""
-			},
+		},
 		"PcrGuiScripts": {
 			"type": "string",
 			"value": ""

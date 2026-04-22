@@ -16,9 +16,21 @@ use MediaWiki\Hook\SkinAfterBottomScriptsHook;
 use MediaWiki\Hook\SkinBuildSidebarHook;
 use MediaWiki\Hook\BeforePageDisplayHook;
 
-use GlobalVarConfig;
-use OutputPage;
-use Skin;
+// Class aliases for multi-version compatibility.
+// These need to be in global scope so phan can pick up on them,
+// and before any use statements that make use of the namespaced names.
+if ( version_compare( MW_VERSION, '1.41', '<' ) ) {
+	class_exists( 'MediaWiki\Config\Config' ) or class_alias( '\Config', '\MediaWiki\Config\Config' );
+	class_exists( 'MediaWiki\Output\OutputPage' ) or class_alias( '\OutputPage', '\MediaWiki\Output\OutputPage' );
+}
+
+if ( version_compare( MW_VERSION, '1.44', '<' ) ) {
+	class_exists( 'MediaWiki\Skin\Skin' ) or class_alias( '\Skin', '\MediaWiki\Skin\Skin' );
+}
+
+use MediaWiki\Config\Config;
+use MediaWiki\Output\OutputPage;
+use MediaWiki\Skin\Skin;
 
 /**
  * PHPMD will warn us about these things here but since they're hooks,
@@ -36,13 +48,13 @@ class Hooks implements
 	BeforePageDisplayHook
 {
 
-	private GlobalVarConfig $config;
+	private Config $config;
 
 	/**
-	 * @param GlobalVarConfig $config
+	 * @param Config $config
 	 */
 	public function __construct(
-		GlobalVarConfig $config
+		Config $config
 	) {
 		$this->config = $config;
 	}
