@@ -81,8 +81,8 @@ class Hooks implements
 		$_array = $this->config->get( "PcrGuiMetaItems" );
 		if ( is_array( $_array ) && ( count( $_array ) > 0 ) ) {
 
-			foreach ( $_array as $value ) {
-				$out->addMeta( $value[0], $value[1] );
+			foreach ( $_array as $key => $value ) {
+				$out->addMeta( $key, $value );
 			}
 		}
 
